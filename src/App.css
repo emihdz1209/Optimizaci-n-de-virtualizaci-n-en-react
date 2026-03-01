@@ -1,42 +1,177 @@
 #root {
-  max-width: 1280px;
+  max-width: 900px;
   margin: 0 auto;
   padding: 2rem;
   text-align: center;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+/* Header Navigation */
+.header-nav {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 2rem;
+  padding: 0.8rem;
+  border-bottom: 1px solid #444;
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
+.header-nav a {
+  padding: 0.5rem 1.2rem;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 500;
+  color: inherit;
+  transition: background-color 0.2s;
+}
+
+.header-nav a:hover {
+  background-color: #333;
+}
+
+.header-nav a.active {
+  background-color: #aad6ec;
+  color: white;
+}
+
+@media (prefers-color-scheme: light) {
+  .header-nav a:hover {
+    background-color: #e0e0e0;
   }
-  to {
-    transform: rotate(360deg);
+  .header-nav a.active {
+    background-color: #aad6ec;
+    color: white;
   }
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
+/* Sección Contador */
+.seccion-contador .card {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  padding: 0 1.5rem;
+}
+
+.seccion-contador label {
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+.textos-container {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-top: 1rem;
+}
+
+.texto-hijo {
+  padding: 0.8rem;
+  border: 1px solid #444;
+  border-radius: 8px;
+}
+
+/* Sección Lista Dinámica / Pokédex */
+.seccion-lista {
+  text-align: left;
+}
+
+.seccion-lista h2 {
+  text-align: center;
+}
+
+.lista-controles {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+  flex-wrap: wrap;
+}
+
+.lista-controles input {
+  flex: 1;
+  min-width: 180px;
+  padding: 0.6em 1em;
+  border-radius: 8px;
+  border: 1px solid #444;
+  background-color: #1a1a1a;
+  color: inherit;
+  font-size: 1em;
+  font-family: inherit;
+}
+
+@media (prefers-color-scheme: light) {
+  .lista-controles input {
+    background-color: #f9f9f9;
+    border-color: #ccc;
   }
 }
 
-.card {
-  padding: 2em;
+.btn-agregar {
+  background-color: #2d6a4f;
+  color: white;
 }
 
-.read-the-docs {
+.btn-revertir {
+  background-color: #e76f51;
+  color: white;
+}
+
+.lista-elementos {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.elemento-lista {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.8rem 1rem;
+  border: 1px solid #444;
+  border-radius: 8px;
+}
+
+.elemento-info {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.elemento-img {
+  width: 60px;
+  height: 60px;
+  object-fit: contain;
+  border-radius: 50%;
+  background-color: #2a2a2a;
+}
+
+@media (prefers-color-scheme: light) {
+  .elemento-img {
+    background-color: #f0f0f0;
+  }
+}
+
+.elemento-nombre {
+  font-size: 1.1rem;
+  font-weight: 500;
+}
+
+.elemento-acciones {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.btn-like {
+  background-color: #3a86a8;
+  color: white;
+}
+
+.btn-eliminar {
+  background-color: #c1121f;
+  color: white;
+}
+
+.lista-vacia {
+  text-align: center;
   color: #888;
+  margin-top: 1rem;
 }

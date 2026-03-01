@@ -1,16 +1,39 @@
-# React + Vite
+Renderizado en React: Virtual DOM, React.memo y map()
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+¿Qué es el Virtual DOM?
+El Virtual DOM es una representación en memoria del DOM real del navegador.
+En lugar de modificar directamente el DOM, lo cual es costoso en términos de rendimiento, React: 
+  1.- Crea una copia virtual del DOM.
+  2.- Cuando ocurre un cambio de estado (state o props), genera un nuevo Virtual DOM.
+  3.- Compara el Virtual DOM anterior con el nuevo (proceso llamado diffing).
+  4.- Actualiza únicamente las partes del DOM real que cambiaron.
+Este proceso se conoce como reconciliación.
 
-Currently, two official plugins are available:
+¿Por qué es importante?
+Manipular el DOM real es lento porque:
+  -Implica operaciones de reflow y repaint.
+  -Afecta el rendimiento cuando hay muchos elementos.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+El Virtual DOM permite:
+  -Reducir operaciones innecesarias.
+  -Actualizar solo lo estrictamente necesario.
+  -Mejorar el rendimiento en aplicaciones grandes.
 
-## React Compiler
+¿Cuándo ocurre un re-render en React?
 
-The React Compiler is currently not compatible with SWC. See [this issue](https://github.com/vitejs/vite-plugin-react/issues/428) for tracking the progress.
+Un componente se vuelve a renderizar cuando:
+  -Cambia su state
+  -Cambian sus props
+  -Se vuelve a renderizar su componente padre
 
-## Expanding the ESLint configuration
+Importante: Aunque un componente hijo no use el estado del padre, si el padre se renderiza, por defecto el hijo también lo hace.
+Esto puede provocar renderizados innecesarios.
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+React.memo
+React.memo es una función de orden superior (Higher Order Component) que memoriza un componente funcional.
+Evita que el componente se vuelva a renderizar si sus props no han cambiado.
+
+Cuando un componente está envuelto en React.memo:
+  -React compara las props anteriores con las nuevas.
+  -Si son iguales (comparación superficial / shallow comparison), el componente NO se renderiza nuevamente.
+  -Si cambian, entonces sí se renderiza.
